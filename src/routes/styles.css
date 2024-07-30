@@ -6,10 +6,10 @@
 	--font-mono: 'Fira Mono', monospace;
 	--color-bg-0: rgb(0, 0, 0);
 	--color-bg-1: hsl(0, 0%, 10%);
-	--color-bg-2: hsl(0, 0%, 1%);
+	--color-bg-2: hsl(0, 0%, 27%);
 	--color-theme-1: #0a1b2e;
 	--color-theme-2: #ff8800;
-	--color-text: rgb(232, 232, 232);
+	--color-text: var(--color-theme-2);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 	font-family: var(--font-body);
@@ -27,7 +27,7 @@ body {
 			rgba(90, 89, 89, 0.75) 0%,
 			rgba(255, 255, 255, 0) 100%
 		),
-		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-0) 50%);
 }
 
 h1,
@@ -41,12 +41,7 @@ p {
 }
 
 a {
-	color: var(--color-theme-1);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
+	color: var(--color-theme-2);
 }
 
 h1 {
@@ -61,12 +56,16 @@ h2 {
 pre {
 	font-size: 16px;
 	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
+	background-color: var(--color-bg-2);
 	border-radius: 3px;
 	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
 	padding: 0.5em;
 	overflow-x: auto;
 	color: var(--color-text);
+}
+
+pre code {
+ color: white;
 }
 
 .text-column {
