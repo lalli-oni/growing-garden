@@ -11,8 +11,14 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
+			<li class="dropdown-container" aria-current={$page.url.pathname.includes('/article') ? 'page' : undefined}>
+				<a href="/article">Articles</a>
+			</li>
+			<li aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined}>
+				<a href="/about-app">About App</a>
+			</li>
+			<li aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined}>
+				<a href="/about-me">About me</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">Sverdle</a>
@@ -28,25 +34,6 @@
 	header {
 		display: flex;
 		justify-content: center;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
 	}
 
 	nav {
@@ -92,7 +79,7 @@
 		top: 0;
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+		border-top: var(--size) solid var(--color-theme-2);
 	}
 
 	nav a {
