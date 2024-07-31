@@ -11,7 +11,7 @@
 	</p>
 
 	<p>
-		Scaffolded using vercel & sveltekit. Markdown integration using <a href="https://mdsvex.pngwn.io">mdsvex</a>
+		Scaffolded using vercel & sveltekit. Markdown integration using <a rel="external" href="https://mdsvex.pngwn.io">mdsvex</a>
 	</p>
 
 	<h2>Links</h2>
