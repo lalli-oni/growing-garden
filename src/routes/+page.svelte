@@ -1,5 +1,7 @@
-<script>
-	import Counter from './Counter.svelte';
+<script lang="ts">
+	import MostRecentPosts from './MostRecentPosts.svelte'
+
+	export let data
 </script>
 
 <svelte:head>
@@ -8,14 +10,18 @@
 </svelte:head>
 
 <section>
-	<h1>
-		Larus Thor's digital garden
-	</h1>
+	<div>
+		<h1>
+			Larus Thor's digital garden
+		</h1>
+	
+		<p>
+			Welcome! What is a digital garden? Well, it's probably best explained by others.<br />
+			<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
+		</p>
+	</div>
 
-	<p>
-		Welcome! What is a digital garden? Well, it's probably best explained by others.<br />
-		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
-	</p>
+	<MostRecentPosts data={data} />
 </section>
 
 <style>
@@ -25,6 +31,7 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		gap: 1rem;
 	}
 
 	h1 {
