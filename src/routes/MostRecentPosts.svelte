@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { formatDate } from '$lib/dateTime';
-
 	export let data;
 </script>
 
