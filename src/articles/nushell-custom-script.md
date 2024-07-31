@@ -10,7 +10,6 @@ published: true
 created: 2024-07-30
 updated: 2024-07-30
 ---
-# Writing nushell custom scripts
 
 Nushell is a great shell to work with.
 
