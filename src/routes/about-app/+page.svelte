@@ -11,6 +11,11 @@
 	</p>
 
 	<p>
-		Scaffolded using vercel & sveltekit.
+		Scaffolded using vercel & sveltekit. Markdown integration using <a href="https://mdsvex.pngwn.io">mdsvex</a>
 	</p>
+
+	<h2>Links</h2>
+	<ul>
+		<li><a href="https://joyofcode.xyz/sveltekit-markdown-blog#setting-up-mdsvex">Markdown setup</a></li>
+	</ul>
 </div>
