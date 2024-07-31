@@ -16,6 +16,6 @@
 
 	<h2>Links</h2>
 	<ul>
-		<li><a href="https://joyofcode.xyz/sveltekit-markdown-blog#setting-up-mdsvex">Markdown setup</a></li>
+		<li><a rel="external" href="https://joyofcode.xyz/sveltekit-markdown-blog#setting-up-mdsvex">Markdown setup</a></li>
 	</ul>
 </div>
