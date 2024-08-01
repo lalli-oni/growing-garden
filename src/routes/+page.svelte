@@ -19,6 +19,8 @@
 			Welcome! What is a digital garden? Well, it's probably best explained by others.<br />
 			<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
 		</p>
+
+		<p>As you can see this place is quite a mess. I have spent my focus on something that engages me. I'm working against TODO list found in the various experiments & about app section.</p>
 	</div>
 
 	<MostRecentPosts data={data} />
