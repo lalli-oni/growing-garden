@@ -11,8 +11,11 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li class="dropdown-container" aria-current={$page.url.pathname.includes('/article') ? 'page' : undefined}>
-				<a href="/article">Articles</a>
+			<li aria-current={$page.url.pathname.includes('/articles') ? 'page' : undefined}>
+				<a href="/articles">Articles</a>
+			</li>
+			<li aria-current={$page.url.pathname.includes('/experiments') ? 'page' : undefined}>
+				<a href="/experiments">Experiments</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined}>
 				<a href="/about-app">About App</a>
