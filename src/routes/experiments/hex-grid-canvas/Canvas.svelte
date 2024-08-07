@@ -46,15 +46,34 @@
 	}
 
     const drawGrid = () => {
-        for (let y = 0, j = 0; y < height; y += radius * Math.sin(angle)) {
+        gridPath = new Path2D()
+        for (let y = 0; y < height + radius; y += radius * Math.sin(angle)) {
+            let staggerIndex = 0
             for (
                 let x = 0;
-                x + radius * (1 + Math.cos(angle)) < width + 100;
-                x += radius * (1 + Math.cos(angle)), y += (-1) ** j++ * radius * Math.sin(angle)
+                (x + radius * (1 + Math.cos(angle)) - 1) < width + radius;
+                x += radius * (1 + Math.cos(angle))
             ) {
-                drawHexagon(x, y);
-                console.log(`drawing hexagon at ${x}, ${y}. ${height}`)
+                // Stagger vertically
+                const staggeredY = y += (-1) ** staggerIndex++ * radius * Math.sin(angle)
+
+                console.log(`drawing hexagon at ${x}, ${staggeredY}. ${staggerIndex}`)
+
+                // context.save()
+                // context.translate(x, y)
+                context.setTransform(1, 0, 0, 1, x, staggeredY)
+                context.stroke(hexPath);
+                if (staggerIndex % 2 > 0) {
+                    context.fillStyle = 'red'
+                } else {
+                    context.fillStyle = 'blue'
+                }
+                context.fill(hexPath)
+
+                // debugger
+                // context.restore()
             }
+            // debugger
         }
     }
 
