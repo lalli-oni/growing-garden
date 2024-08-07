@@ -23,9 +23,10 @@
     const radius = 50
 	
 	onMount(() => {
-		context = canvas.getContext('2d')
-		//context.lineWidth = 3
-		
+        const ctx = canvas.getContext('2d')
+        if (ctx === null) return
+        context = ctx
+
 		handleSize()
 
         drawGrid()
