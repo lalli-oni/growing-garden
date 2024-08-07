@@ -46,6 +46,12 @@
 	}
 
     const drawGrid = () => {
+        // Doubled coordinates
+        let doubleX = -5
+        let doubleY = -2
+        const hexModel: Array<Hex> = []
+        console.log(`${width / radius} horizontal hexes`)
+        
         gridPath = new Path2D()
         for (let y = 0; y < height + radius; y += radius * Math.sin(angle)) {
             let staggerIndex = 0
@@ -70,11 +76,19 @@
                 }
                 context.fill(hexPath)
 
+                console.log(`doubled ${doubleX},${doubleY}`)
+                const cubedCoordinates = doubledToCubed({ x: doubleX, y: doubleY })
+                console.log(`cubed q:${cubedCoordinates.q}, r:${cubedCoordinates.r}, s:${cubedCoordinates.s}`)
+                hexModel.push({ coordinates: cubedCoordinates})
                 // debugger
                 // context.restore()
+                doubleX += 2
             }
             // debugger
+            doubleX = 0
+            doubleY += 2
         }
+        grid = new Grid(hexModel)
     }
 
     const drawHexagon = (x, y) => {
