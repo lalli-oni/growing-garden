@@ -6,8 +6,11 @@
 	export let color = '#333'
 	export let background = '#fff'
 	
-	let canvas
-	let context
+	const width = 800
+	const height = 500
+	
+	let canvas: HTMLCanvasElement
+	let context: CanvasRenderingContext2D
 	
     let corners
 
@@ -71,6 +74,5 @@
 <canvas
     {width}
     {height}
-    style:background
     bind:this={canvas}
 />
