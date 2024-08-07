@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	
-	export let width = 800
-	export let height = 500
-	export let color = '#333'
-	export let background = '#fff'
+
+    import { Grid } from './Grid.ts'
+	import { doubledToCubed } from './coordinates.utils.ts';
 	
 	const width = 800
 	const height = 500
@@ -38,7 +36,6 @@
             hexPath.lineTo(0 + radius * Math.cos(angle * i), 0 + radius * Math.sin(angle * i))
         }
         hexPath.closePath()
-
     }
 	
 	const handleSize = () => {
@@ -91,15 +88,16 @@
         grid = new Grid(hexModel)
     }
 
-    const drawHexagon = (x, y) => {
+    // Deprecated: tiny bit slower than using Path2D
+    const drawHexagon = (x: number, y: number) => {
         context.beginPath();
         for (var i = 0; i < 6; i++) {
             context.lineTo(x + radius * Math.cos(angle * i), y + radius * Math.sin(angle * i));
         }
-        context.closePath();
-        context.stroke();
-        context.fillStyle = "green"
-        context.fill()
+        context.closePath()
+        context.stroke()
+        // context.fillStyle = "green"
+        // context.fill()
     }
 </script>
 
