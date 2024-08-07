@@ -23,6 +23,14 @@
         drawGrid()
 	})
 	
+    const generateHexPath = () => {
+        hexPath = new Path2D()
+        for (var i = 0; i < 6; i++) {
+            hexPath.lineTo(0 + radius * Math.cos(angle * i), 0 + radius * Math.sin(angle * i))
+        }
+        hexPath.closePath()
+
+    }
 	
 	const handleSize = () => {
 		const corners = canvas.getBoundingClientRect()
