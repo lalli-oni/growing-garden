@@ -41,7 +41,7 @@
     }
 	
 	const handleSize = () => {
-		const corners = canvas.getBoundingClientRect()
+		corners = canvas.getBoundingClientRect()
 	}
 
     const drawGrid = () => {
