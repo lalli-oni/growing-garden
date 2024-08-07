@@ -28,7 +28,7 @@
         context = ctx
 
 		handleSize()
-
+        generateHexPath()
         drawGrid()
 	})
 	
