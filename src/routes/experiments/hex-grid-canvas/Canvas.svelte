@@ -11,6 +11,11 @@
 	
     let corners
 
+    let hexPath: Path2D
+    let gridPath: Path2D
+
+    let grid: Grid
+
     const angle = 2 * Math.PI / 6
     const radius = 50
 	
