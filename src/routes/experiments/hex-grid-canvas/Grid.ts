@@ -5,6 +5,10 @@ export class Grid {
 		return this._hexes
 	}
 
+	public get(coordinates: CubeCoordinates): Hex | null {
+		return this._hexes.find((h) => h.coordinates.q === coordinates.q && h.coordinates.r === coordinates.r && h.coordinates.s === coordinates.s)
+	}
+
 	constructor(hexes: Array<Hex>) {
 		this._hexes = hexes
 	}
