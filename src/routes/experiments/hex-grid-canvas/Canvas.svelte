@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 
+    import Controls from './Controls.svelte'
+
     import { Grid } from './Grid.ts'
 	import { doubledToCubed } from './coordinates.utils.ts';
 	
@@ -16,6 +18,7 @@
     let gridPath: Path2D
 
     let grid: Grid
+    let selectedHex: Hex
 
     const angle = 2 * Math.PI / 6
     const radius = 50
@@ -28,7 +31,48 @@
 		handleSize()
         generateHexPath()
         drawGrid()
+        const selection = grid.get({ q: 0, r: 0, s: 0})
+        selectedHex = selection
 	})
+
+    const selectHex = (event: CustomEvent<Direction>) => {
+        let newCoordinates: CubeCoordinates
+        switch (event.detail) {
+            case 'Up':
+                newCoordinates = { ...selectedHex.coordinates, s: selectedHex.coordinates.s + 1, r: selectedHex.coordinates.r - 1 }
+                break;
+            case 'UpRight':
+                newCoordinates = { ...selectedHex.coordinates, q: selectedHex.coordinates.q + 1, r: selectedHex.coordinates.r - 1 } 
+                break;
+            case 'DownRight':
+                newCoordinates = { ...selectedHex.coordinates, q: selectedHex.coordinates.q + 1, s: selectedHex.coordinates.s - 1 }
+                break;
+            case 'Down':
+                newCoordinates = { ...selectedHex.coordinates, s: selectedHex.coordinates.s - 1, r: selectedHex.coordinates.r + 1 }
+                break;
+            case 'DownLeft':
+                newCoordinates = { ...selectedHex.coordinates, r: selectedHex.coordinates.r + 1, q: selectedHex.coordinates.q - 1 }
+                break;
+            case 'UpLeft':
+                newCoordinates = { ...selectedHex.coordinates, s: selectedHex.coordinates.s + 1, q: selectedHex.coordinates.q - 1 }
+                break;
+        }
+        const newSelection = grid.get(newCoordinates)
+        if (!newSelection) console.error(`Trying to select invalid hex}`)
+
+        context.setTransform(1, 0, 0, 1, selectedHex.canvasCoordinates.x, selectedHex.canvasCoordinates.y)
+        context.stroke(hexPath)
+        selectedHex = newSelection
+    }
+
+    const drawSelectedHex = (hex: Hex) => {
+        if (!context) return
+        console.log(`drawing hex at ${hex.coordinates.q}, ${hex.coordinates.r}, ${hex.coordinates.s}`)
+        context.setTransform(1, 0, 0, 1, hex.canvasCoordinates.x, hex.canvasCoordinates.y)
+        context.strokeStyle = "white"
+        context.stroke(hexPath)
+        context.strokeStyle = "black"
+    }
 	
     const generateHexPath = () => {
         hexPath = new Path2D()
@@ -103,6 +147,8 @@
 
 <svelte:window on:resize={handleSize} />
 
+<Controls selectedHex={selectedHex} grid={grid} on:selectHex={selectHex}/>
+<InfoArea selectedHex={selectedHex} />
 <canvas
     {width}
     {height}
