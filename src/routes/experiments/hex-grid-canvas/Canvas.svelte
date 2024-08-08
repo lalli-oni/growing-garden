@@ -2,12 +2,15 @@
 	import { onMount } from 'svelte'
 
     import Controls from './Controls.svelte'
+	import InfoArea from './InfoArea.svelte';
 
     import { Grid } from './Grid.ts'
-	import { doubledToCubed } from './coordinates.utils.ts';
+	import { doubledToCubed } from './coordinates.utils.ts'
+	import { claim_text } from 'svelte/internal'
 	
 	const width = 800
 	const height = 500
+    const backgroundColor = "#fff"
 	
 	let canvas: HTMLCanvasElement
 	let context: CanvasRenderingContext2D
@@ -15,14 +18,14 @@
     let corners
 
     let hexPath: Path2D
-    let gridPath: Path2D
+    const angle = 2 * Math.PI / 6
+    const radius = 50
 
     let grid: Grid
     let selectedHex: Hex
-
-    const angle = 2 * Math.PI / 6
-    const radius = 50
 	
+    $: drawSelectedHex(selectedHex)
+
 	onMount(() => {
         const ctx = canvas.getContext('2d')
         if (ctx === null) return
@@ -86,14 +89,13 @@
 		corners = canvas.getBoundingClientRect()
 	}
 
+    // Extract initializing the grid model
     const drawGrid = () => {
         // Doubled coordinates
-        let doubleX = -5
-        let doubleY = -2
+        let doubleX = -4
+        let doubleY = -4
         const hexModel: Array<Hex> = []
-        console.log(`${width / radius} horizontal hexes`)
-        
-        gridPath = new Path2D()
+
         for (let y = 0; y < height + radius; y += radius * Math.sin(angle)) {
             let staggerIndex = 0
             for (
@@ -103,45 +105,32 @@
             ) {
                 // Stagger vertically
                 const staggeredY = y += (-1) ** staggerIndex++ * radius * Math.sin(angle)
+                const staggeredDoubleY = (staggerIndex % 2 == 0) ? doubleY - 1 : doubleY
+                // debugger
 
-                console.log(`drawing hexagon at ${x}, ${staggeredY}. ${staggerIndex}`)
+                const cubedCoordinates = doubledToCubed({ x: doubleX, y: staggeredDoubleY })
+                console.log(`doubled ${doubleX},${staggeredDoubleY}`)
+                console.log(`cubed q:${cubedCoordinates.q}, r:${cubedCoordinates.r}, s:${cubedCoordinates.s}`)
+                hexModel.push({ coordinates: cubedCoordinates, canvasCoordinates: { x, y: staggeredY }})
 
-                // context.save()
-                // context.translate(x, y)
                 context.setTransform(1, 0, 0, 1, x, staggeredY)
-                context.stroke(hexPath);
+                context.stroke(hexPath)
                 if (staggerIndex % 2 > 0) {
                     context.fillStyle = 'red'
                 } else {
                     context.fillStyle = 'blue'
                 }
                 context.fill(hexPath)
+                context.font = "12px serif"
+                // context.strokeText(`q: ${cubedCoordinates.q}, r: ${cubedCoordinates.r}, s: ${cubedCoordinates.s}`, -(radius / 2), 0)
+                // context.strokeText(`x: ${doubleX}, y: ${staggeredDoubleY}`, -(radius / 2), 0)
 
-                console.log(`doubled ${doubleX},${doubleY}`)
-                const cubedCoordinates = doubledToCubed({ x: doubleX, y: doubleY })
-                console.log(`cubed q:${cubedCoordinates.q}, r:${cubedCoordinates.r}, s:${cubedCoordinates.s}`)
-                hexModel.push({ coordinates: cubedCoordinates})
-                // debugger
-                // context.restore()
-                doubleX += 2
+                doubleX += 1
             }
-            // debugger
-            doubleX = 0
+            doubleX = -4
             doubleY += 2
         }
         grid = new Grid(hexModel)
-    }
-
-    // Deprecated: tiny bit slower than using Path2D
-    const drawHexagon = (x: number, y: number) => {
-        context.beginPath();
-        for (var i = 0; i < 6; i++) {
-            context.lineTo(x + radius * Math.cos(angle * i), y + radius * Math.sin(angle * i));
-        }
-        context.closePath()
-        context.stroke()
-        // context.fillStyle = "green"
-        // context.fill()
     }
 </script>
 
@@ -149,8 +138,10 @@
 
 <Controls selectedHex={selectedHex} grid={grid} on:selectHex={selectHex}/>
 <InfoArea selectedHex={selectedHex} />
+
 <canvas
     {width}
     {height}
+    style:backgroundColor
     bind:this={canvas}
 />
