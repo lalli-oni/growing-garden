@@ -39,7 +39,7 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: var(--color-theme-1);
+		--background: var(--color-bg-semidark);
 	}
 
 	svg {
