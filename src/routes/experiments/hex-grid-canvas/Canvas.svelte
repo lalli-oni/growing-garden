@@ -4,9 +4,8 @@
     import Controls from './Controls.svelte'
 	import InfoArea from './InfoArea.svelte';
 
-    import { Grid } from './Grid.ts'
-	import { doubledToCubed } from './coordinates.utils.ts'
-	import { claim_text } from 'svelte/internal'
+    import { Grid } from './Grid'
+	import { doubledToCubed } from './coordinates.utils'
 	
 	const width = 800
 	const height = 500
