@@ -1,5 +1,11 @@
 <script lang="ts">
-	export let data;
+	import type { Article } from "$lib/types";
+
+    interface ArticlesData {
+        articles: Array<Article>
+    }
+
+	export let data: ArticlesData
 </script>
 
 <div>
