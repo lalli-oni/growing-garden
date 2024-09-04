@@ -3,9 +3,6 @@
 
 	import { createEventDispatcher } from 'svelte';
 
-    export let selectedHex: Hex
-    export let grid: Grid
-
 	const dispatch = createEventDispatcher<{ selectHex: Direction }>();
 </script>
 
