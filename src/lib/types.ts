@@ -5,6 +5,8 @@ export type Article = {
 	slug: string
 	description: string
 	date: string
+	created: string
+	updated: string
 	categories: Categories[]
 	published: boolean
 }
