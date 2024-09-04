@@ -34,6 +34,10 @@
         generateHexPath()
         drawGrid()
         const selection = grid.get({ q: 0, r: 0, s: 0})
+        if (!selection) {
+            console.error(`Trying to select invalid hex}`)
+            return
+        }
         selectedHex = selection
 	})
 
@@ -60,7 +64,10 @@
                 break;
         }
         const newSelection = grid.get(newCoordinates)
-        if (!newSelection) console.error(`Trying to select invalid hex}`)
+        if (!newSelection) {
+            console.error(`Trying to select invalid hex}`)
+            return
+        }
 
         context.setTransform(1, 0, 0, 1, selectedHex.canvasCoordinates.x, selectedHex.canvasCoordinates.y)
         context.stroke(hexPath)
@@ -115,9 +122,9 @@
                 context.setTransform(1, 0, 0, 1, x, staggeredY)
                 context.stroke(hexPath)
                 if (staggerIndex % 2 > 0) {
-                    context.fillStyle = 'red'
+                    context.fillStyle = 'green'
                 } else {
-                    context.fillStyle = 'blue'
+                    context.fillStyle = '#006400'
                 }
                 context.fill(hexPath)
                 context.font = "12px serif"
@@ -135,12 +142,32 @@
 
 <svelte:window on:resize={handleSize} />
 
-<Controls selectedHex={selectedHex} grid={grid} on:selectHex={selectHex}/>
-<InfoArea selectedHex={selectedHex} />
+<div class="root-layout">
+    <div class="control-area">
+        <div>
+            <Controls on:selectHex={selectHex}/>
+        </div>
+        <InfoArea selectedHex={selectedHex} />
+    </div>
+    <canvas
+        {width}
+        {height}
+        style:backgroundColor
+        bind:this={canvas}
+    />
+</div>
 
-<canvas
-    {width}
-    {height}
-    style:backgroundColor
-    bind:this={canvas}
-/>
+<style>
+    .root-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .control-area {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+    }
+</style>
