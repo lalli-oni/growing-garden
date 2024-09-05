@@ -60,11 +60,4 @@
 	h1 {
 		width: 100%;
 	}
-
-	.content-overview {
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-		gap: 1rem;
-	}
 </style>

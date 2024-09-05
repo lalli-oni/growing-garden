@@ -27,10 +27,6 @@
 </nav>
 
 <style>
-    .component-title {
-        margin: 0px;
-    }
-
 	.article-recent-link > li {
 		padding: 0.6rem 0.7rem;
 		border-radius: 1.5rem;
