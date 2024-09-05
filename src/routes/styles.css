@@ -10,7 +10,8 @@
 	--color-bg-text: hsl(0, 0%, 27%);
 	--color-bg-2: hsl(0, 0%, 27%);
 	--color-primary: #f2b68b;
-	--color-text: #ff7700;
+	--color-text: #ffefe1;
+	--color-text-highlight: #f97d25;
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 	font-family: var(--font-body);
@@ -35,12 +36,12 @@ h1,
 h2,
 h3 {
 	font-weight: 400;
-	color: var(--color-highlight-text);
+	color: var(--color-text-highlight);
 }
 
 p {
 	line-height: 1.5;
-	color: hsl(from var(--color-primary) h s l / 50%);
+	color: var(--color-text);
 }
 
 a {
