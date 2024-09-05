@@ -11,5 +11,12 @@ export default defineConfig({
 	],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
+	},
+	esbuild: {
+		logOverride: {
+			// This is to suppress warning to toPositiveZero()
+			//	src\routes\experiments\hex-grid-canvas\coordinates.utils.ts
+			"equals-negative-zero": "silent"
+		}
 	}
 });
