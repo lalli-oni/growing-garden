@@ -9,14 +9,14 @@
 	<meta name="description" content="Digital garden of lalli-oni" />
 </svelte:head>
 
-<section>
+<main>
 	<div>
 		<h1>
-			Digital garden for lalli-oni
+			Welcome!
 		</h1>
 	
 		<p>
-			Welcome! What is a digital garden? Well, think less structured blog or a collection of notes.<br />
+			This is the personal digital garden of lalli-oni.<br />
 			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
 
 			For a much better look at what is a digital garden:
@@ -28,31 +28,33 @@
 
 		</p>
 	</div>
-
-	<div class="content-overview">
+	<div>
 		<MostRecentPosts data={data} />
-		<div>
-			<h3>Experiments</h3>
-			<ol>
-				<li>
-					<a href="/experiments/hex-grid-canvas">Hex grid in canvas element</a>
-				</li>
-				<li>
-					<a href="/experiments/wasm-rust">Compiled Rust -&gt; WASM code</a>
-				</li>
-			</ol>
-		</div>
 	</div>
-</section>
+	<div>
+		<h1>Experiments</h1>
+		<ol>
+			<li>
+				<a href="/experiments/hex-grid-canvas">Hex grid in canvas element</a>
+			</li>
+			<li>
+				<a href="/experiments/wasm-rust">Compiled Rust -&gt; WASM code</a>
+			</li>
+		</ol>
+	</div>
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+
+	main {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 1rem;
+	}
+
+	main > div {
+		border: 1px solid white;
+		padding: 0.5rem;
 	}
 
 	h1 {
