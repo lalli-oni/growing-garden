@@ -5,6 +5,9 @@
     const features = [{
         name: "relative colors",
         check: ["color", "hsl(from white h s l)"]
+    }, {
+        name: "CSS nesting",
+        check: "selector(&)"
     }]
     
     let unsupportedFeatures: Writable<Array<string>> = writable([])
@@ -18,10 +21,10 @@
                     if (!CSS.supports(f.check[0], f.check[1])) {
                         $unsupportedFeatures = [...$unsupportedFeatures, f.name]
                     }
-                } else {
-                    // if (!CSS.supports(f.check)) {
-                    //     unsupportedFeatures.push(f.name)
-                    // }
+                } else if (typeof f.check === "string") {
+                    if (!CSS.supports(f.check)) {
+                        $unsupportedFeatures = [...$unsupportedFeatures, f.name]
+                    }
                 }
             })
         }
