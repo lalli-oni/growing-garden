@@ -19,13 +19,13 @@
 			This is the personal digital garden of lalli-oni.<br />
 			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
 
-			For a much better look at what is a digital garden:
+			For a much better description of what a digital garden is:
 			<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
 		</p>
 
 		<p>
 			I do apologize for the mess over here. I tend to play with what strikes my fancy at any given time as this is my personal project.<br />
-
+			So a lot of the obvious, "basic" features and styling considerations are kept waiting.
 		</p>
 	</div>
 	<div>
@@ -45,19 +45,26 @@
 </main>
 
 <style>
-
 	main {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 1rem;
 	}
+	
+
+	/* @media only screen and (max-width: 768px) {
+		main {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		}
+	} */
 
 	main > div {
-		border: 1px solid white;
+		border: 2px solid rgba(128, 128, 128, 0.2);
 		padding: 0.5rem;
+		border-radius: 1rem;
 	}
 
-	h1 {
-		width: 100%;
+	main > div:hover {
+		border: 2px solid var(--color-text-highlight);
 	}
 </style>
