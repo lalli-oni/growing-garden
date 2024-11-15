@@ -48,6 +48,10 @@ a {
 	color: var(--color-primary);
 }
 
+a:hover {
+	color: var(--color-text-highlight);
+}
+
 h1 {
 	font-size: 2rem;
 	text-align: center;
@@ -107,4 +111,12 @@ button:focus:not(:focus-visible) {
 	position: absolute;
 	width: 1px;
 	white-space: nowrap;
+}
+
+.external-link:after {
+    content: "🗗";
+	font-size: 0.8rem;
+	vertical-align: top;
+    display: inline-box;
+	color: white;
 }
