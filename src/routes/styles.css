@@ -10,14 +10,13 @@
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	--font-flair: margarine-regular;
-	--color-bg-dark: #090501;
+	--color-bg-dark: #150c03;
 	--color-bg-semidark: #211204;
 	--color-bg-text: hsl(0, 0%, 27%);
 	--color-bg-2: hsl(0, 0%, 27%);
 	--color-primary: #f2b68b;
 	--color-secondary: #4b6b30;
-	--color-accent: #63b55b;
-	--color-text: #ff7700;
+	--color-text: #dd6802;
 	--color-highlight-text: var(--color-accent);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
