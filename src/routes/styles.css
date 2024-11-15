@@ -10,14 +10,13 @@
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	--font-flair: margarine-regular;
-	--color-bg-dark: #090501;
+	--color-bg-dark: #150c03;
 	--color-bg-semidark: #211204;
 	--color-bg-text: hsl(0, 0%, 27%);
 	--color-bg-2: hsl(0, 0%, 27%);
 	--color-primary: #f2b68b;
 	--color-secondary: #4b6b30;
-	--color-accent: #63b55b;
-	--color-text: #ff7700;
+	--color-text: #dd6802;
 	--color-highlight-text: var(--color-accent);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
@@ -31,24 +30,19 @@ body {
 	background-attachment: fixed;
 	background-color: var(--color-bg-dark);
 	background-size: 100vw 100vh;
-	background-image: radial-gradient(
-			50% 50% at 50% 50%,
-			rgba(90, 89, 89, 0.75) 5%,
-			rgba(255, 255, 255, 0) 95%
-		),
-		linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-semidark) 15%, var(--color-bg-dark) 40%);
 }
 
 h1,
 h2,
 h3 {
-	font-family: var(--font-flair);
+	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 400;
-	color: var(--color-highlight-text);
+	color: white;
 }
 
 p {
 	line-height: 1.5;
+	font-weight: 550;
 }
 
 a {
@@ -62,6 +56,12 @@ h1 {
 
 h2 {
 	font-size: 1.4rem;
+}
+
+strong {
+	color: white;
+	letter-spacing: 1px;
+	font-size: 1.1rem;
 }
 
 pre {

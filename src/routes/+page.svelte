@@ -11,12 +11,12 @@
 
 <section>
 	<div>
-		<h1>
-			Digital garden for lalli-oni
-		</h1>
+		<div class="bg-illustration">
+			<img src="/cloud-illustration.svg" alt="cloud illustration" />
+		</div>
 	
 		<p>
-			Welcome! What is a digital garden? Well, think less structured blog or a collection of notes.<br />
+			<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
 			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
 
 			For a much better look at what is a digital garden:
@@ -57,6 +57,11 @@
 
 	h1 {
 		width: 100%;
+	}
+
+	.bg-illustration {
+		top: 0;
+		position: absolute;
 	}
 
 	.content-overview {
