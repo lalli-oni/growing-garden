@@ -62,6 +62,7 @@
 	.bg-illustration {
 		top: 0;
 		position: absolute;
+		z-index: -10;
 	}
 
 	.content-overview {
