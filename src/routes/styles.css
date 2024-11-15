@@ -30,12 +30,6 @@ body {
 	background-attachment: fixed;
 	background-color: var(--color-bg-dark);
 	background-size: 100vw 100vh;
-	background-image: radial-gradient(
-			50% 50% at 50% 50%,
-			rgba(90, 89, 89, 0.75) 5%,
-			rgba(255, 255, 255, 0) 95%
-		),
-		linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-semidark) 15%, var(--color-bg-dark) 40%);
 }
 
 h1,
