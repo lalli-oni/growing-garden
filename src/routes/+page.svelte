@@ -16,7 +16,7 @@
 		</div>
 	
 		<p>
-			Welcome! What is a digital garden? Well, think less structured blog or a collection of notes.<br />
+			<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
 			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
 
 			For a much better look at what is a digital garden:
