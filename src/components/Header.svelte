@@ -32,6 +32,9 @@
 
 <style>
 	header {
+		left: 50%;
+		right: 50%;
+		position: absolute;
 		display: flex;
 		justify-content: center;
 	}

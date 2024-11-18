@@ -12,7 +12,11 @@
 	<meta name="description" content="Digital garden of lalli-oni" />
 </svelte:head>
 
-<main>
+<section>
+	<div class="bg-illustration">
+		<img src="/cloud-illustration.svg" alt="cloud illustration" />
+	</div>
+
 	<p>
 		<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
 		These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
@@ -59,5 +63,16 @@
 
 	.panel-grid > div:hover {
 		border: 2px solid var(--color-text-highlight);
+	.bg-illustration {
+		top: 0;
+		position: absolute;
+		z-index: -10;
+	}
+
+	.content-overview {
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		gap: 1rem;
 	}
 </style>
