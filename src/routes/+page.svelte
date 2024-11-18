@@ -12,7 +12,7 @@
 	<meta name="description" content="Digital garden of lalli-oni" />
 </svelte:head>
 
-<section>
+<main>
 	<div class="bg-illustration">
 		<img src="/cloud-illustration.svg" alt="cloud illustration" />
 	</div>
