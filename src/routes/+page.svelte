@@ -63,6 +63,8 @@
 
 	.panel-grid > div:hover {
 		border: 2px solid var(--color-text-highlight);
+	}
+
 	.bg-illustration {
 		top: 0;
 		position: absolute;
