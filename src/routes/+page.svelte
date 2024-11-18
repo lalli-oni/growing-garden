@@ -13,42 +13,31 @@
 </svelte:head>
 
 <main>
-	<div>
-		<h1>
-			Welcome!
-		</h1>
-	
-		<p>
-			This is the personal digital garden of lalli-oni.<br />
-			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
+	<p>
+		<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
+		These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
 
-			For a much better description of what a digital garden is:
-			<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
-		</p>
-
-		<p>
-			I do apologize for the mess over here. I tend to play with what strikes my fancy at any given time as this is my personal project.<br />
-			So a lot of the obvious, "basic" features and styling considerations are kept waiting.
-		</p>
-	</div>
-	<div>
-		<MostRecentPosts data={data} />
-	</div>
-	<div>
-		<h1>Experiments</h1>
-		<ol>
-			<li>
-				<a href="/experiments/hex-grid-canvas">Hex grid in canvas element</a>
-			</li>
-			<li>
-				<a href="/experiments/wasm-rust">Compiled Rust -&gt; WASM code</a>
-			</li>
-		</ol>
+		For a much better look at what is a digital garden:
+		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
+	</p>
+	<div class="panel-grid">
+		<div>
+			<AboutMe />
+		</div>
+		<div>
+			<AboutApp />
+		</div>
+		<div>
+			<MostRecentPosts data={data} />
+		</div>
+		<div>
+			<Experiments />
+		</div>
 	</div>
 </main>
 
 <style>
-	main {
+	.panel-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 1rem;
@@ -61,13 +50,14 @@
 		}
 	} */
 
-	main > div {
+	.panel-grid > div {
 		border: 2px solid rgba(128, 128, 128, 0.2);
-		padding: 0.5rem;
+		padding: 1rem;
 		border-radius: 1rem;
+		height: fit-content;
 	}
 
-	main > div:hover {
+	.panel-grid > div:hover {
 		border: 2px solid var(--color-text-highlight);
 	}
 </style>
