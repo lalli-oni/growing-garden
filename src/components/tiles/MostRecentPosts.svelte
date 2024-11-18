@@ -8,7 +8,7 @@
 	export let data: ArticlesData
 </script>
 
-<h1>Most recent articles</h1>
+<h2>Most recent articles</h2>
 <nav>
     <ol>
         {#each data.articles as article}
