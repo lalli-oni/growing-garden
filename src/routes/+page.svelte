@@ -1,5 +1,8 @@
 <script lang="ts">
-	import MostRecentPosts from './MostRecentPosts.svelte'
+	import AboutApp from '../components/tiles/AboutApp.svelte';
+	import AboutMe from '../components/tiles/AboutMe.svelte';
+	import Experiments from '../components/tiles/Experiments.svelte';
+	import MostRecentPosts from '../components/tiles/MostRecentPosts.svelte'
 
 	export let data
 </script>
