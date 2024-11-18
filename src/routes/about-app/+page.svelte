@@ -18,17 +18,4 @@
 	<ul>
 		<li><span>https://joyofcode.xyz/sveltekit-markdown-blog#setting-up-mdsvex</span></li>
 	</ul>
-
-	<h2>TODO</h2>
-	<ol>
-		<li>Fix external linking</li>
-		<li>[Managerspeak] Make it look less like crap</li>
-		<li>Header dropdown navigation</li>
-		<li>Fully move to typescript</li>
-		<li>Add a testing prerequisite for Deployment (sry Vercel!)</li>
-		<li>Cleanup WASM preprocessors</li>
-		<li>Articles/Experiments overview on home page</li>
-		<li>Figure out a structure for components</li>
-		<li>[optional] tailwind</li>
-	</ol>
 </div>

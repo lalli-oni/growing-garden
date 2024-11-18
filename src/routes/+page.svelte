@@ -1,5 +1,8 @@
 <script lang="ts">
-	import MostRecentPosts from './MostRecentPosts.svelte'
+	import AboutApp from '../components/tiles/AboutApp.svelte';
+	import AboutMe from '../components/tiles/AboutMe.svelte';
+	import Experiments from '../components/tiles/Experiments.svelte';
+	import MostRecentPosts from '../components/tiles/MostRecentPosts.svelte'
 
 	export let data
 </script>
@@ -9,54 +12,57 @@
 	<meta name="description" content="Digital garden of lalli-oni" />
 </svelte:head>
 
-<section>
-	<div>
-		<div class="bg-illustration">
-			<img src="/cloud-illustration.svg" alt="cloud illustration" />
-		</div>
-	
-		<p>
-			<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
-			These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
-
-			For a much better look at what is a digital garden:
-			<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
-		</p>
-
-		<p>
-			I do apologize for the mess over here. I tend to play with what strikes my fancy at any given time as this is my personal project.<br />
-
-		</p>
+<main>
+	<div class="bg-illustration">
+		<img src="/cloud-illustration.svg" alt="cloud illustration" />
 	</div>
 
-	<div class="content-overview">
-		<MostRecentPosts data={data} />
+	<p>
+		<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
+		These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
+
+		For a much better look at what is a digital garden:
+		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
+	</p>
+	<div class="panel-grid">
 		<div>
-			<h3>Experiments</h3>
-			<ol>
-				<li>
-					<a href="/experiments/hex-grid-canvas">Hex grid in canvas element</a>
-				</li>
-				<li>
-					<a href="/experiments/wasm-rust">Compiled Rust -&gt; WASM code</a>
-				</li>
-			</ol>
+			<AboutMe />
+		</div>
+		<div>
+			<AboutApp />
+		</div>
+		<div>
+			<MostRecentPosts data={data} />
+		</div>
+		<div>
+			<Experiments />
 		</div>
 	</div>
-</section>
+</main>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+	.panel-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 1rem;
 	}
+	
 
-	h1 {
-		width: 100%;
+	/* @media only screen and (max-width: 768px) {
+		main {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		}
+	} */
+
+	.panel-grid > div {
+		border: 2px solid rgba(128, 128, 128, 0.2);
+		padding: 1rem;
+		border-radius: 1rem;
+		height: fit-content;
+	}
+
+	.panel-grid > div:hover {
+		border: 2px solid var(--color-text-highlight);
 	}
 
 	.bg-illustration {
