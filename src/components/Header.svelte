@@ -49,6 +49,7 @@
 		width: 2em;
 		height: 3em;
 		display: block;
+		flex-shrink: 0;
 	}
 
 	path {
