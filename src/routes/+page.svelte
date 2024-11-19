@@ -74,19 +74,12 @@
 	}
 
 	.panel-grid > div:hover {
-		border: 2px solid var(--color-text-highlight);
+		border: 2px solid var(--color-text);
 	}
 
 	.bg-illustration {
 		top: 0;
 		position: absolute;
 		z-index: -10;
-	}
-
-	.content-overview {
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-		gap: 1rem;
 	}
 </style>
