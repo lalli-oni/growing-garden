@@ -49,6 +49,7 @@
 		width: 2em;
 		height: 3em;
 		display: block;
+		flex-shrink: 0;
 	}
 
 	path {
@@ -100,6 +101,6 @@
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		color: var(--color-primary);
 	}
 </style>

@@ -12,7 +12,7 @@
 	<meta name="description" content="Digital garden of lalli-oni" />
 </svelte:head>
 
-<main>
+<div class="vertical-stack">
 	<div class="bg-illustration">
 		<img src="/cloud-illustration.svg" alt="cloud illustration" />
 	</div>
@@ -38,9 +38,21 @@
 			<Experiments />
 		</div>
 	</div>
-</main>
+</div>
 
 <style>
+	.vertical-stack {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem;
+		gap: 4rem;
+	}
+
+	p {
+		padding-top: 6rem;
+	}
+
 	.panel-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,19 +74,12 @@
 	}
 
 	.panel-grid > div:hover {
-		border: 2px solid var(--color-text-highlight);
+		border: 2px solid var(--color-text);
 	}
 
 	.bg-illustration {
 		top: 0;
 		position: absolute;
 		z-index: -10;
-	}
-
-	.content-overview {
-		display: flex;
-		flex-direction: row;
-		align-items: baseline;
-		gap: 1rem;
 	}
 </style>
