@@ -49,6 +49,10 @@
 		gap: 4rem;
 	}
 
+	p {
+		padding-top: 6rem;
+	}
+
 	.panel-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
