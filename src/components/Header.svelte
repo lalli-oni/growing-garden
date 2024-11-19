@@ -101,6 +101,6 @@
 	}
 
 	a:hover {
-		color: var(--color-theme-1);
+		color: var(--color-primary);
 	}
 </style>
