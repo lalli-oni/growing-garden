@@ -13,9 +13,6 @@
 </svelte:head>
 
 <div class="vertical-stack">
-	<div class="bg-illustration">
-		<img src="/cloud-illustration.svg" alt="cloud illustration" />
-	</div>
 
 	<p>
 		<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
