@@ -17,11 +17,16 @@
 			<li aria-current={$page.url.pathname.includes('/experiments') ? 'page' : undefined}>
 				<a href="/experiments">Experiments</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined}>
-				<a href="/about-app">About App</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined}>
-				<a href="/about-me">About me</a>
+			<li aria-current={$page.url.pathname.includes('/about-') ? 'page' : undefined}>
+				<div class="dropdown">About...</div>
+				<div class="dropdown-content">
+					<div>
+						<a aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined} href="/about-app">App</a>
+					</div>
+					<div>
+						<a aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined} href="/about-me">Author</a>
+					</div>
+				</div>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -83,7 +88,7 @@
 		top: 0;
 		left: calc(50% - var(--size));
 		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-2);
+		border-top: var(--size) solid var(--color-text);
 	}
 
 	nav a {
@@ -100,7 +105,44 @@
 		transition: color 0.2s linear;
 	}
 
+
 	a:hover {
 		color: var(--color-primary);
+	}
+
+	.dropdown {
+		cursor: default;
+		display: flex;
+		height: 100%;
+		align-items: center;
+		padding: 0 0.5rem;
+		color: var(--color-text);
+		font-weight: 700;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		text-decoration: none;
+		transition: color 0.2s linear;
+	}
+
+	.dropdown:hover + .dropdown-content {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+	.dropdown-content:hover {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+
+	.dropdown-content {
+		position: absolute;
+		transform: translateY(-100%);
+		opacity: 0;
+		background: var(--background);
+		transition: transform 0.7s, opacity 1s;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 0.2rem;
 	}
 </style>
