@@ -7,24 +7,26 @@
 
 
 <a href={'/article/' + article.slug} class="article-recent-link">
-    <li>
+    <div>
         <div class="header">
             <span class="title">{article.title}</span>
         </div>
         <div class="footer">
-            <p class="date">{formatDate(article.updated)}</p>
+            <p>{formatDate(article.updated)}</p>
         </div>
-    </li>
+    </div>
 </a>
 
 <style>
-	li {
-		padding: 0.6rem 0.7rem;
-		border-radius: 1.5rem;
-	}
+    a:hover, a:visited, a:link, a:active
+    {
+        text-decoration: none;
+    }
 
 	.title {
 		font-size: 1.2rem;
+        color: white;
+        text-decoration: none;
 	}
 
 	.footer {
