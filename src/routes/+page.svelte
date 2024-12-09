@@ -56,6 +56,9 @@
 		gap: 1rem;
 	}
 	
+	
+
+
 
 	/* @media only screen and (max-width: 768px) {
 		main {
@@ -74,9 +77,4 @@
 		border: 2px solid var(--color-text);
 	}
 
-	.bg-illustration {
-		top: 0;
-		position: absolute;
-		z-index: -10;
-	}
 </style>
