@@ -22,16 +22,16 @@
 		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
 	</p>
 	<div class="panel-grid">
-		<div>
-			<AboutMe />
-		</div>
-		<div>
-			<AboutApp />
-		</div>
-		<div>
+		<div id="most-recent-panel">
 			<MostRecentPosts data={data} />
 		</div>
-		<div>
+		<div id="about-me-panel">
+			<AboutMe />
+		</div>
+		<div id="about-app-panel">
+			<AboutApp />
+		</div>
+		<div id="experiments-panel">
 			<Experiments />
 		</div>
 	</div>
@@ -51,11 +51,29 @@
 	}
 
 	.panel-grid {
+		width: 80%;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-template-rows: repeat(auto-fit, minmax(100, 1fr));
 		gap: 1rem;
 	}
-	
+
+	#most-recent-panel {
+		grid-column: 1;
+		grid-row: 1 / 3;
+	}
+	#about-me-panel {
+		grid-column: 3;
+		grid-row: 1;
+	}
+	#about-app-panel {
+		grid-column: 3;
+		grid-row: 2;
+	}
+	#experiments-panel {
+		grid-column: 2;
+		grid-row: 1;
+	}
 
 	/* @media only screen and (max-width: 768px) {
 		main {
@@ -74,9 +92,4 @@
 		border: 2px solid var(--color-text);
 	}
 
-	.bg-illustration {
-		top: 0;
-		position: absolute;
-		z-index: -10;
-	}
 </style>

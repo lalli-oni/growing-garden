@@ -4,9 +4,8 @@ export type Article = {
 	title: string
 	slug: string
 	description: string
-	date: string
-	created: string
-	updated: string
+	created: Date
+	updated: Date
 	categories: Categories[]
 	published: boolean
 }
