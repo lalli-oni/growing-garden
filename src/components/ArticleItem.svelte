@@ -11,15 +11,17 @@
         <div class="header">
             <span class="title">{article.title}</span>
         </div>
-        <div class="footer">
-            <p>{formatDate(article.updated)}</p>
-        </div>
+        <p class="footer">{formatDate(article.updated)}</p>
     </div>
 </a>
 
 <style>
-    a:hover, a:visited, a:link, a:active
+    a:hover, a:visited, a:active
     {
+        text-decoration: underline;
+    }
+
+    a {
         text-decoration: none;
     }
 
@@ -31,5 +33,7 @@
 
 	.footer {
 		font-size: 0.8rem;
+        margin-top: 0.3rem;
+        margin-bottom: 0.5rem;
 	}
 </style>
