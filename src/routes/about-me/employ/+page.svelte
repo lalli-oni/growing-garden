@@ -4,7 +4,7 @@
 </svelte:head>
 
 <div class="text-column">
-    <h1>Why should consider employing me?</h1>
+    <h1>Why should you consider employing me?</h1>
     <h2>Values</h2>
     <p>Transparency is important to me. I have never seen the point of punishing someone for telling you something you don't want to hear. Much less when it is a valuable piece of feedback one can use to develop oneself.</p>
     <p>I ma not here to sell you a used car. I hope to be finding a place to work in for an extended period of time, as such it's important to see if it's a good fit. As such I am not interested in presenting anything other than an honest image of me.</p>
