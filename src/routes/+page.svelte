@@ -2,6 +2,7 @@
 	import Tile from '../components/Tile.svelte';
 	import AboutApp from '../components/tiles/AboutApp.svelte';
 	import AboutMe from '../components/tiles/AboutMe.svelte';
+	import EmployMe from '../components/tiles/EmployMe.svelte';
 	import Experiments from '../components/tiles/Experiments.svelte';
 	import MostRecentPosts from '../components/tiles/MostRecentPosts.svelte'
 
@@ -26,14 +27,17 @@
 		<Tile title="Most recent articles" --grid-column="1" --grid-row="1 / 3">
 			<MostRecentPosts data={data} />
 		</Tile>
+		<Tile title="Experiments" --grid-column="2" --grid-row="1">
+			<Experiments />
+		</Tile>
+		<Tile title="Employ me" --grid-column="2" --grid-row="2">
+			<EmployMe />
+		</Tile>
 		<Tile title="About me" --grid-column="3" --grid-row="1">
 			<AboutMe />
 		</Tile>
 		<Tile title="About app" --grid-column="3" --grid-row="2">
 			<AboutApp />
-		</Tile>
-		<Tile title="Experiments" --grid-column="2" --grid-row="1">
-			<Experiments />
 		</Tile>
 	</div>
 </div>
