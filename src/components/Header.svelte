@@ -24,7 +24,7 @@
 						<a aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined} href="/about-app">App</a>
 					</div>
 					<div>
-						<a aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined} href="/about-me">Author</a>
+						<a aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined} href="/about-me">Me</a>
 					</div>
 				</div>
 			</li>

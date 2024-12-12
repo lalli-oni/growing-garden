@@ -11,7 +11,7 @@
 	</p>
 
 	<p>
-		Short 2 year technical education in computer science centered around Microsoft stack (C#, ASP.NET, SQL server)
+		Short 2 year technical education in computer science centered around Microsoft stack (mainly C#, ASP.NET design patterns and agile).
 	</p>
 
 	<p>
@@ -24,5 +24,6 @@
 		<li>ASP.NET WebAPI</li>
 		<li>Parser and transcompiler of a 90's ASCII PLC program</li>
 		<li>Printing of a real world 18 meter long network graph</li>
+		<li>vue product suite</li>
 	</ul>
 </div>
