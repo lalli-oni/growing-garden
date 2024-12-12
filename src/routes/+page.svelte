@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Tile from '../components/Tile.svelte';
 	import AboutApp from '../components/tiles/AboutApp.svelte';
 	import AboutMe from '../components/tiles/AboutMe.svelte';
 	import Experiments from '../components/tiles/Experiments.svelte';
@@ -22,18 +23,18 @@
 		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
 	</p>
 	<div class="panel-grid">
-		<div id="most-recent-panel">
+		<Tile title="Most recent articles" --grid-column="1" --grid-row="1 / 3">
 			<MostRecentPosts data={data} />
-		</div>
-		<div id="about-me-panel">
+		</Tile>
+		<Tile title="About me" --grid-column="3" --grid-row="1">
 			<AboutMe />
-		</div>
-		<div id="about-app-panel">
+		</Tile>
+		<Tile title="About app" --grid-column="3" --grid-row="2">
 			<AboutApp />
-		</div>
-		<div id="experiments-panel">
+		</Tile>
+		<Tile title="Experiments" --grid-column="2" --grid-row="1">
 			<Experiments />
-		</div>
+		</Tile>
 	</div>
 </div>
 
@@ -58,10 +59,6 @@
 		gap: 1rem;
 	}
 
-	#most-recent-panel {
-		grid-column: 1;
-		grid-row: 1 / 3;
-	}
 	#about-me-panel {
 		grid-column: 3;
 		grid-row: 1;
@@ -73,23 +70,6 @@
 	#experiments-panel {
 		grid-column: 2;
 		grid-row: 1;
-	}
-
-	/* @media only screen and (max-width: 768px) {
-		main {
-			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		}
-	} */
-
-	.panel-grid > div {
-		border: 2px solid rgba(128, 128, 128, 0.2);
-		padding: 1rem;
-		border-radius: 1rem;
-		height: fit-content;
-	}
-
-	.panel-grid > div:hover {
-		border: 2px solid var(--color-text);
 	}
 
 </style>
