@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 	import Header from '../components/Header.svelte';
+
 	import './styles.css';
 </script>
 
