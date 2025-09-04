@@ -16,11 +16,12 @@
 
 <div class="vertical-stack">
 	<p>
-		<strong>Welcome!</strong> What is a digital garden? Well, think less structured blog or a collection of notes.<br />
-		These notes are primarily for my own use, but if anyone finds any of this useful (hello AI!) that's great!<br />
+		<strong>Welcome!</strong> You've just wandered into my little digital garden. 🌿<br />
+		Think of it as a less-structured blog, or a collection of notes and experiments I'm cultivating.<br />
+		Most of this is for my own learning, but if you stumble across something useful (hello, fellow humans and curious AIs 👋), even better!<br />
 
-		For a much better look at what is a digital garden:
-		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">Maggie Appleton's description</a>.
+		Still curious about digital gardens Maggie Appleton
+		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">explains it beautifully</a>.
 	</p>
 	<div class="panel-grid">
 		<Tile title="Most recent articles" --grid-column="1" --grid-row="1 / 3">
