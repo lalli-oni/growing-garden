@@ -17,8 +17,8 @@ async function getPosts() {
 		}
 	}
 
-	articles = articles.sort((first, second) =>
-    new Date(second.created).getTime() - new Date(first.created).getTime()
+	articles = articles.sort(
+		(first, second) => new Date(second.created).getTime() - new Date(first.created).getTime()
 	)
 
 	return articles

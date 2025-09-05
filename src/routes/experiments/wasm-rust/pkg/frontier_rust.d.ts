@@ -1,5 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-*/
-export function greet(): void;
+ */
+export function greet(): void

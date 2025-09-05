@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let data
-    console.log(data)
+	console.log(data)
 </script>
 
 <!-- SEO -->
@@ -11,21 +11,21 @@
 </svelte:head>
 
 <article>
-  <!-- Title -->
+	<!-- Title -->
 	<hgroup>
 		<h1>{data.meta.title}</h1>
 		<p>Published at {data.meta.created}</p>
 		<p>Modified at {data.meta.updated}</p>
 	</hgroup>
 
-  <!-- Tags -->
+	<!-- Tags -->
 	<div class="tags">
 		{#each data.meta.categories as category}
 			<span>&num;{category}</span>
 		{/each}
 	</div>
 
-  <!-- Post -->
+	<!-- Post -->
 	<div class="prose">
 		<svelte:component this={data.content} />
 	</div>
@@ -49,6 +49,6 @@
 	.tags > * {
 		padding: 0.2rem 0.3rem;
 		border-radius: 2rem;
-        color: var(--color-highlight-text)
+		color: var(--color-highlight-text);
 	}
 </style>

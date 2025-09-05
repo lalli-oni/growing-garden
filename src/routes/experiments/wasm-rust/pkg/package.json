@@ -1,20 +1,20 @@
 {
-  "name": "frontier-rust",
-  "type": "module",
-  "collaborators": [
-    "lalli-oni"
-  ],
-  "version": "0.1.0",
-  "files": [
-    "frontier_rust_bg.wasm",
-    "frontier_rust.js",
-    "frontier_rust_bg.js",
-    "frontier_rust.d.ts"
-  ],
-  "main": "frontier_rust.js",
-  "types": "frontier_rust.d.ts",
-  "sideEffects": [
-    "./frontier_rust.js",
-    "./snippets/*"
-  ]
+	"name": "frontier-rust",
+	"type": "module",
+	"collaborators": [
+		"lalli-oni"
+	],
+	"version": "0.1.0",
+	"files": [
+		"frontier_rust_bg.wasm",
+		"frontier_rust.js",
+		"frontier_rust_bg.js",
+		"frontier_rust.d.ts"
+	],
+	"main": "frontier_rust.js",
+	"types": "frontier_rust.d.ts",
+	"sideEffects": [
+		"./frontier_rust.js",
+		"./snippets/*"
+	]
 }

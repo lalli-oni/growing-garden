@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Header from '../components/Header.svelte';
+	import Header from '../components/Header.svelte'
 
-	import './styles.css';
+	import './styles.css'
 </script>
 
 <div class="app">

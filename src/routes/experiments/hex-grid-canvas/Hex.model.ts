@@ -1,17 +1,17 @@
 type Hex = {
-	coordinates: CubeCoordinates;
-	canvasCoordinates: { x: number; y: number; }
+	coordinates: CubeCoordinates
+	canvasCoordinates: { x: number; y: number }
 }
 
-type Direction = 'Up' | 'UpRight' | 'DownRight' | 'Down' | 'DownLeft' | 'UpLeft';
+type Direction = 'Up' | 'UpRight' | 'DownRight' | 'Down' | 'DownLeft' | 'UpLeft'
 
 type CubeCoordinates = {
-	q: number;
-	r: number;
-	s: number;
+	q: number
+	r: number
+	s: number
 }
 
 type DoubledCoordinates = {
-	x: number;
-	y: number;
+	x: number
+	y: number
 }

@@ -6,13 +6,14 @@ export class Grid {
 	}
 
 	public get(coordinates: CubeCoordinates): Hex | null {
-		return this._hexes?.find(
-			(h) => 
-				h.coordinates.q === coordinates.q
-				&& h.coordinates.r === coordinates.r
-				&& h.coordinates.s === coordinates.s
-			)
-			|| null
+		return (
+			this._hexes?.find(
+				(h) =>
+					h.coordinates.q === coordinates.q &&
+					h.coordinates.r === coordinates.r &&
+					h.coordinates.s === coordinates.s
+			) || null
+		)
 	}
 
 	constructor(hexes: Array<Hex>) {

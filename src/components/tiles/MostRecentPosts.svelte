@@ -3,7 +3,7 @@
 	import ArticleItem from '../ArticleItem.svelte'
 
 	interface ArticlesData {
-		articles: Array<Article>;
+		articles: Array<Article>
 	}
 
 	export let data: ArticlesData
@@ -12,7 +12,7 @@
 <nav>
 	<!-- Sort on updated date (descending, recent first) -->
 	{#each data.articles.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime()) as article}
-		<ArticleItem article={article} />
+		<ArticleItem {article} />
 	{/each}
 </nav>
 

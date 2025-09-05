@@ -7,20 +7,24 @@
 	<h1>About me</h1>
 
 	<p>
-		Sprouted in Iceland. Favors the untrodden path, fascinated by the interesting (possibly a trait attributed to my boredom allergy, sometimes refered to as ADHD).
+		Sprouted in Iceland. Favors the untrodden path, fascinated by the interesting (possibly a trait
+		attributed to my boredom allergy, sometimes refered to as ADHD).
 	</p>
 
 	<p>
-		I have trained ballroom & latin dancing for more than 10 years. Worked in factories. Studied filmmaking. Made hotel beds. Been thrown around as a zombie.
+		I have trained ballroom & latin dancing for more than 10 years. Worked in factories. Studied
+		filmmaking. Made hotel beds. Been thrown around as a zombie.
 	</p>
 
 	<p>
 		Sailed the Atlantic (well, I let the ferry crew handle most of it to be honest) down to Denmark.
-		Grabbed me some technical education (AP degree Datamatiker) computer science focused on the Microsoft stack.
+		Grabbed me some technical education (AP degree Datamatiker) computer science focused on the
+		Microsoft stack.
 	</p>
 
 	<p>
-		Job history is sporadic but importantly gathered my chops early on as a fullstack consultant early on.
+		Job history is sporadic but importantly gathered my chops early on as a fullstack consultant
+		early on.
 	</p>
 	<ul>
 		<li>Designing and implementing Oracle DB data warehouse w/ Stored Procedures</li>
@@ -32,7 +36,8 @@
 		<li>Building vue product suite along with component library</li>
 	</ul>
 	<p>
-		As a frontend developer I have built my share of applications but a lot of my experience has been concerning building a frontend specialization in a fullstack team.
+		As a frontend developer I have built my share of applications but a lot of my experience has
+		been concerning building a frontend specialization in a fullstack team.
 	</p>
 	<ul>
 		<li>Developing frontend testing strategies</li>

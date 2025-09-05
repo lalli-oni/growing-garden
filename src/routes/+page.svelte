@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Tile from '../components/Tile.svelte';
-	import AboutApp from '../components/tiles/AboutApp.svelte';
-	import AboutMe from '../components/tiles/AboutMe.svelte';
-	import EmployMe from '../components/tiles/EmployMe.svelte';
-	import Experiments from '../components/tiles/Experiments.svelte';
+	import Tile from '../components/Tile.svelte'
+	import AboutApp from '../components/tiles/AboutApp.svelte'
+	import AboutMe from '../components/tiles/AboutMe.svelte'
+	import EmployMe from '../components/tiles/EmployMe.svelte'
+	import Experiments from '../components/tiles/Experiments.svelte'
 	import MostRecentPosts from '../components/tiles/MostRecentPosts.svelte'
 
 	export let data
@@ -17,15 +17,18 @@
 <div class="vertical-stack">
 	<p>
 		<strong>Welcome!</strong> You've just wandered into my little digital garden. 🌿<br />
-		Think of it as a less-structured blog, or a collection of notes and experiments I'm cultivating.<br />
-		Most of this is for my own learning, but if you stumble across something useful (hello, fellow humans and curious AIs 👋), even better!<br />
+		Think of it as a less-structured blog, or a collection of notes and experiments I'm cultivating.<br
+		/>
+		Most of this is for my own learning, but if you stumble across something useful (hello, fellow humans
+		and curious AIs 👋), even better!<br />
 
 		Still curious about digital gardens Maggie Appleton
-		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">explains it beautifully</a>.
+		<a href="https://maggieappleton.com/garden-history?ref=ideasurg.pub">explains it beautifully</a
+		>.
 	</p>
 	<div class="panel-grid">
 		<Tile title="Most recent articles" --grid-column="1" --grid-row="1 / 3">
-			<MostRecentPosts data={data} />
+			<MostRecentPosts {data} />
 		</Tile>
 		<Tile title="Experiments" --grid-column="2" --grid-row="1">
 			<Experiments />
@@ -75,5 +78,4 @@
 		grid-column: 2;
 		grid-row: 1;
 	}
-
 </style>

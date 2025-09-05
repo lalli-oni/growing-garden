@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/stores'
 </script>
 
 <header>
@@ -21,10 +21,16 @@
 				<div class="dropdown">About...</div>
 				<div class="dropdown-content">
 					<div>
-						<a aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined} href="/about-app">App</a>
+						<a
+							aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined}
+							href="/about-app">App</a
+						>
 					</div>
 					<div>
-						<a aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined} href="/about-me">Me</a>
+						<a
+							aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined}
+							href="/about-me">Me</a
+						>
 					</div>
 				</div>
 			</li>
@@ -105,7 +111,6 @@
 		transition: color 0.2s linear;
 	}
 
-
 	a:hover {
 		color: var(--color-primary);
 	}
@@ -139,7 +144,9 @@
 		transform: translateY(-100%);
 		opacity: 0;
 		background: var(--background);
-		transition: transform 0.7s, opacity 1s;
+		transition:
+			transform 0.7s,
+			opacity 1s;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
