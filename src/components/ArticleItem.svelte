@@ -5,7 +5,7 @@
 	export let article: Article
 </script>
 
-<a href={'/article/' + article.slug} class="article-recent-link">
+<a href={'/articles/' + article.slug} class="article-recent-link">
 	<div>
 		<div class="header">
 			<span class="title">{article.title}</span>
