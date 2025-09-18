@@ -19,7 +19,7 @@
 
 	<!-- Tags -->
 	<div class="tags">
-		{#each data.meta.categories as category}
+		{#each data.meta.categories as category (category)}
 			<Pill label={category} backgroundColor="#CC5500" />
 		{/each}
 	</div>

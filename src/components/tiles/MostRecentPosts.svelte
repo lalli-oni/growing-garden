@@ -11,7 +11,7 @@
 
 <nav>
 	<!-- Sort on updated date (descending, recent first) -->
-	{#each data.articles.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime()) as article}
+	{#each data.articles.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime()) as article (article.title)}
 		<ArticleItem {article} />
 	{/each}
 </nav>
