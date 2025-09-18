@@ -1,6 +1,5 @@
 <script lang="ts">
-	export let data
-	console.log(data)
+	import Pill from '../../../components/Pill.svelte'
 </script>
 
 <!-- SEO -->
@@ -21,7 +20,7 @@
 	<!-- Tags -->
 	<div class="tags">
 		{#each data.meta.categories as category}
-			<span>&num;{category}</span>
+			<Pill label={category} backgroundColor="#CC5500" />
 		{/each}
 	</div>
 
