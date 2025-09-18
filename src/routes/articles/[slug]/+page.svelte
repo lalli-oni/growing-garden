@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Pill from '../../../components/Pill.svelte'
+
+	import type { PageProps } from './$types'
+
+	let { data }: PageProps = $props()
 </script>
 
 <!-- SEO -->
@@ -26,7 +30,8 @@
 
 	<!-- Post -->
 	<div class="prose">
-		<svelte:component this={data.content} />
+		<!-- mdsvex rendered component -->
+		<data.content />
 	</div>
 </article>
 
