@@ -7,7 +7,7 @@ let articles: Article[] | null
 // NOTE (LTJ): How to trigger this when server initializes?
 articles = await loadArticles()
 
-async function getPosts() {
+async function getArticles() {
 	if (articles === null) {
 		articles = await loadArticles()
 	}
@@ -38,7 +38,7 @@ async function loadArticles(): Promise<Article[]> {
 }
 
 export async function GET() {
-	const posts = await getPosts()
+	const posts = await getArticles()
 	return json(posts)
 }
 
