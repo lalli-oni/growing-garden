@@ -2,16 +2,12 @@
 	import type { Article } from '$lib/types'
 	import ArticleItem from '../ArticleItem.svelte'
 
-	interface ArticlesData {
-		articles: Array<Article>
-	}
-
-	export let data: ArticlesData
+	let { articles }: { articles: Array<Article> } = $props()
 </script>
 
 <nav>
-	<!-- Sort on updated date (descending, recent first) -->
-	{#each data.articles.sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime()) as article (article.title)}
+	<!-- Expected sorted by date descending -->
+	{#each articles as article (article.title)}
 		<ArticleItem {article} />
 	{/each}
 </nav>

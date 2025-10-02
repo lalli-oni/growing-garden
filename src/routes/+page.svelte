@@ -28,7 +28,7 @@
 	</p>
 	<div class="panel-grid">
 		<Tile title="Most recent articles" --grid-column="1" --grid-row="1 / 3">
-			<MostRecentPosts {data} />
+			<MostRecentPosts articles={data.articles} />
 		</Tile>
 		<Tile title="Experiments" --grid-column="2" --grid-row="1">
 			<Experiments />
