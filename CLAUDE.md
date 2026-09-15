@@ -45,3 +45,9 @@ Note: components in this codebase mix Svelte 4 (`export let`) and Svelte 5 (`$pr
 ### Code style
 
 Enforced by Prettier (`.prettierrc`) + ESLint flat config (`eslint.config.js`): tabs, single quotes, no semicolons, no trailing commas, 100-char print width. ESLint config layers `typescript-eslint` recommended rules and `eslint-plugin-svelte` recommended rules, with Prettier conflicts turned off.
+
+## Project management
+
+GitHub issues and the two backlogs (#11 Tech, #19 Content) are managed by the `project-manager` agent (`.claude/agents/project-manager.md`). Delegate to it for status reports, "what should I work on next", triage, and structural issue changes: creating, closing, or reopening issues, labels, milestones, and sub-issue or dependency links. It owns the label taxonomy, the backlog conventions, and the pinned "Current focus" issue.
+
+A PreToolUse hook (`.claude/hooks/guard-issue-writes.sh`) blocks those structural `gh` commands outside the agent. Reading issues, commenting, and editing the title or body of the issue you're implementing stay in the main session.

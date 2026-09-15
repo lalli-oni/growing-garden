@@ -1,0 +1,29 @@
+{
+	"permissions": {
+		"allow": ["Bash(bash .claude/scripts/probe-env.sh)"]
+	},
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"if": "Bash(gh *)",
+						"command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-issue-writes.sh\""
+					}
+				]
+			},
+			{
+				"matcher": "PowerShell",
+				"hooks": [
+					{
+						"type": "command",
+						"if": "PowerShell(gh *)",
+						"command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-issue-writes.sh\""
+					}
+				]
+			}
+		]
+	}
+}
