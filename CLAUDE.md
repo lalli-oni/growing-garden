@@ -31,7 +31,7 @@ There are two independent ways articles get loaded, which must be kept in sync w
 
 ### Homepage tiles
 
-The homepage (`src/routes/+page.svelte`) is a grid of `Tile.svelte` cards, each populated by a component in `src/components/tiles/` (`AboutMe`, `AboutApp`, `EmployMe`, `Experiments`, `MostRecentPosts`). `+page.ts` sets `csr = dev` and `prerender = true` so the homepage ships as a static asset in production and only gets CSR/HMR during development.
+The homepage (`src/routes/+page.svelte`) is a grid of `Tile.svelte` cards, each populated by a component in `src/components/tiles/` (`AboutMe`, `AboutApp`, `EmployMe`, `Experiments`, `MostRecentPosts`). Its `+page.ts` only loads articles through `/api/articles` and sets no page options of its own, so the homepage is not prerendered. The routes that opt in with `csr = dev` and `prerender = true` are `about-app`, `about-me`, and the three `experiments` pages.
 
 Note: components in this codebase mix Svelte 4 (`export let`) and Svelte 5 (`$props()`) prop syntax — check the sibling file's style before assuming which one a given component/route uses.
 
