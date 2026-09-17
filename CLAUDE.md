@@ -31,7 +31,7 @@ There are two independent ways articles get loaded, which must be kept in sync w
 
 ### Homepage tiles
 
-The homepage (`src/routes/+page.svelte`) is a grid of `Tile.svelte` cards, each populated by a component in `src/components/tiles/` (`AboutMe`, `AboutApp`, `EmployMe`, `Experiments`, `MostRecentPosts`). `+page.ts` sets `csr = dev` and `prerender = true` so the homepage ships as a static asset in production and only gets CSR/HMR during development.
+The homepage (`src/routes/+page.svelte`) is a grid of `Tile.svelte` cards, each populated by a component in `src/components/tiles/` (`AboutMe`, `AboutApp`, `EmployMe`, `Experiments`, `MostRecentPosts`). Its `+page.ts` only loads articles through `/api/articles` and sets no page options of its own, so the homepage is not prerendered. The routes that opt in with `csr = dev` and `prerender = true` are `about-app`, `about-me`, and the three `experiments` pages.
 
 Note: components in this codebase mix Svelte 4 (`export let`) and Svelte 5 (`$props()`) prop syntax — check the sibling file's style before assuming which one a given component/route uses.
 
@@ -45,3 +45,9 @@ Note: components in this codebase mix Svelte 4 (`export let`) and Svelte 5 (`$pr
 ### Code style
 
 Enforced by Prettier (`.prettierrc`) + ESLint flat config (`eslint.config.js`): tabs, single quotes, no semicolons, no trailing commas, 100-char print width. ESLint config layers `typescript-eslint` recommended rules and `eslint-plugin-svelte` recommended rules, with Prettier conflicts turned off.
+
+## Project management
+
+GitHub issues and the two backlogs (#11 Tech, #19 Content) are managed by the `project-manager` agent (`.claude/agents/project-manager.md`). Delegate to it for status reports, "what should I work on next", triage, and structural issue changes: creating, closing, or reopening issues, labels, milestones, and sub-issue or dependency links. It owns the label taxonomy, the backlog conventions, and the pinned "Current focus" issue.
+
+A PreToolUse hook (`.claude/hooks/guard-issue-writes.sh`) blocks those structural `gh` commands outside the agent. Reading issues, commenting, and editing the title or body of the issue you're implementing stay in the main session.
