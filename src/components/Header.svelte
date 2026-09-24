@@ -1,24 +1,33 @@
-<script>
+<script lang="ts">
+	// TODO (LTJ): Fix this svelte 5 deprecation issue
 	import { page } from '$app/stores'
+
+	let holdNavbarOpen = true
 </script>
 
-<header>
+<header style:transform={holdNavbarOpen ? 'none' : undefined}>
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
+				<a href="/" title="Home"
+					><div>🪴</div>
+					<div>Home</div></a
+				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/articles') ? 'page' : undefined}>
-				<a href="/articles">Articles</a>
+				<a href="/articles" title="Articles"
+					><div>✍️</div>
+					<div>Articles</div></a
+				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/experiments') ? 'page' : undefined}>
-				<a href="/experiments">Experiments</a>
+				<a href="/experiments" title="Experiments"
+					><div>🧪</div>
+					<div>Experiments</div></a
+				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/about-') ? 'page' : undefined}>
-				<div class="dropdown">About...</div>
+				<div class="dropdown">👋</div>
 				<div class="dropdown-content">
 					<div>
 						<a
@@ -35,30 +44,37 @@
 				</div>
 			</li>
 		</ul>
+	</nav>
+	<button aria-label="toggle navbar" onclick={() => (holdNavbarOpen = !holdNavbarOpen)}>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+			<text>{holdNavbarOpen ? 'Open' : 'Closed'}</text>
 		</svg>
-	</nav>
+	</button>
 </header>
 
 <style>
 	header {
-		left: 50%;
-		right: 50%;
-		position: absolute;
+		height: 3rem;
 		display: flex;
-		justify-content: center;
+		--background: var(--color-bg-semidark);
+		transform: translate(-22rem);
+		padding: 0 1rem 1rem 0;
 	}
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: var(--color-bg-semidark);
+	header:hover {
+		transform: none;
+		transition: transform 1s;
+	}
+
+	header > button {
+		background-color: transparent;
+		border: 0;
 	}
 
 	svg {
 		width: 2em;
-		height: 3em;
+		height: 100%;
 		display: block;
 		flex-shrink: 0;
 	}
@@ -68,11 +84,10 @@
 	}
 
 	ul {
-		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
 		display: flex;
+		gap: 0.1rem;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
@@ -98,10 +113,12 @@
 	}
 
 	nav a {
-		display: flex;
 		height: 100%;
+		display: flex;
+		flex-direction: column;
 		align-items: center;
-		padding: 0 0.5rem;
+		justify-content: center;
+		gap: 0.2rem;
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;
