@@ -1,33 +1,35 @@
 <script lang="ts">
-	// TODO (LTJ): Fix this svelte 5 deprecation issue
+	// $app/stores is deprecated; migrate to $app/state (page.url, no $ prefix)
 	import { page } from '$app/stores'
 
-	let holdNavbarOpen = true
+	let holdNavbarOpen = $state(false)
 </script>
 
-<header style:transform={holdNavbarOpen ? 'none' : undefined}>
+<header class:held={holdNavbarOpen}>
 	<nav>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/" title="Home"
-					><div>🪴</div>
+				<a href="/"
+					><div aria-hidden="true">🪴</div>
 					<div>Home</div></a
 				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/articles') ? 'page' : undefined}>
-				<a href="/articles" title="Articles"
-					><div>✍️</div>
+				<a href="/articles"
+					><div aria-hidden="true">✍️</div>
 					<div>Articles</div></a
 				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/experiments') ? 'page' : undefined}>
-				<a href="/experiments" title="Experiments"
-					><div>🧪</div>
+				<a href="/experiments"
+					><div aria-hidden="true">🧪</div>
 					<div>Experiments</div></a
 				>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/about-') ? 'page' : undefined}>
-				<div class="dropdown">👋</div>
+				<div class="dropdown">
+					<span aria-hidden="true">👋</span><span class="visually-hidden">About</span>
+				</div>
 				<div class="dropdown-content">
 					<div>
 						<a
@@ -45,31 +47,47 @@
 			</li>
 		</ul>
 	</nav>
-	<button aria-label="toggle navbar" onclick={() => (holdNavbarOpen = !holdNavbarOpen)}>
+	<button
+		aria-label="toggle navbar"
+		aria-pressed={holdNavbarOpen}
+		onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
+	>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-			<text>{holdNavbarOpen ? 'Open' : 'Closed'}</text>
 		</svg>
 	</button>
 </header>
 
 <style>
+	/* Sole height source: the wedge svg and the nav items size off this via height: 100% */
 	header {
 		height: 3rem;
 		display: flex;
+		width: fit-content;
+		/* On header, not nav: the toggle button's wedge lives outside nav and fills from this */
 		--background: var(--color-bg-semidark);
-		transform: translate(-22rem);
-		padding: 0 1rem 1rem 0;
+		padding-right: 1rem;
+		margin-bottom: 1rem;
 	}
 
-	header:hover {
-		transform: none;
+	/* The bar slides, not the header — that keeps the toggle button on screen when closed */
+	nav {
+		display: flex;
+		justify-content: center;
+		transform: translate(-22rem);
 		transition: transform 1s;
+	}
+
+	header.held nav,
+	header:hover nav,
+	header:focus-within nav {
+		transform: none;
 	}
 
 	header > button {
 		background-color: transparent;
 		border: 0;
+		padding: 0;
 	}
 
 	svg {
@@ -119,6 +137,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 0.2rem;
+		padding: 0 0.5rem;
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;
