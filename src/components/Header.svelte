@@ -90,6 +90,12 @@
 		padding: 0;
 	}
 
+	/* Closed, the wedge is the only affordance on screen — matching the bar's
+	   background would leave nothing to aim at */
+	header:not(.held):not(:hover):not(:focus-within) button path {
+		fill: var(--color-primary);
+	}
+
 	svg {
 		width: 2em;
 		height: 100%;
