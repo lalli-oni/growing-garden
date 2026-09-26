@@ -90,9 +90,9 @@
 		padding: 0;
 	}
 
-	/* Closed, the wedge is the only affordance on screen — matching the bar's
-	   background would leave nothing to aim at */
-	header:not(.held):not(:hover):not(:focus-within) button path {
+	/* The wedge is the toggle's only visible surface, so it stays accented in
+	   every state — filling it with the bar's background hid it against the page */
+	button path {
 		fill: var(--color-primary);
 	}
 
