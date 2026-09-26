@@ -123,13 +123,13 @@ GitHub supports native parent/child sub-issue links, but `gh issue create` has n
 gh issue create --title "..." --body "..." --label "..."
 
 # 2. Fetch its internal numeric id (NOT the issue number, and NOT the "I_kw..." node id from `gh issue view --json`)
-NEW_ID=$(gh api /repos/lalli-oni/growing-garden/issues/<NEW_NUMBER> --jq '.id')
+NEW_ID=$(gh api repos/lalli-oni/growing-garden/issues/<NEW_NUMBER> --jq '.id')
 
 # 3. Link as sub-issue — note `-F` (uppercase, typed int), NOT `-f` (string)
-gh api -X POST /repos/lalli-oni/growing-garden/issues/<PARENT_NUMBER>/sub_issues -F sub_issue_id=$NEW_ID
+gh api -X POST repos/lalli-oni/growing-garden/issues/<PARENT_NUMBER>/sub_issues -F sub_issue_id=$NEW_ID
 ```
 
-The endpoint rejects strings: `gh api -f sub_issue_id=...` returns `422 Invalid property /sub_issue_id: "..." is not of type "integer"`. Always use `-F`.
+Endpoint arguments carry no leading slash: Git Bash rewrites a leading `/` into a Windows path and gh rejects it. The endpoint also rejects strings: `gh api -f sub_issue_id=...` returns `422 Invalid property /sub_issue_id: "..." is not of type "integer"`. Always use `-F`.
 
 ### Issues as living documents
 Issues are not write-once. When working on one:
@@ -192,8 +192,8 @@ Identify and report dependencies between issues:
 Record dependencies with GitHub's native blocked-by link, and comment the reason when it isn't obvious:
 ```bash
 # Numeric id of the BLOCKER (same id rules as sub-issues)
-BLOCKER_ID=$(gh api /repos/lalli-oni/growing-garden/issues/<BLOCKER> --jq '.id')
-gh api -X POST /repos/lalli-oni/growing-garden/issues/<BLOCKED>/dependencies/blocked_by -F issue_id=$BLOCKER_ID
+BLOCKER_ID=$(gh api repos/lalli-oni/growing-garden/issues/<BLOCKER> --jq '.id')
+gh api -X POST repos/lalli-oni/growing-garden/issues/<BLOCKED>/dependencies/blocked_by -F issue_id=$BLOCKER_ID
 gh issue comment <BLOCKED> -b "Blocked by #<BLOCKER>: <why>"
 
 # Read existing dependencies
