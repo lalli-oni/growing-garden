@@ -1,45 +1,48 @@
 <script lang="ts">
-	// $app/stores is deprecated; migrate to $app/state (page.url, no $ prefix)
-	import { page } from '$app/stores'
+	import { page } from '$app/state'
 
 	let holdNavbarOpen = $state(false)
+	let aboutOpen = $state(false)
+	// Svelte scopes classes but not ids, so the gradient needs a per-instance one
+	const wedgeGradient = $props.id()
 </script>
 
 <header class:held={holdNavbarOpen}>
 	<nav>
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/"
 					><div aria-hidden="true">🪴</div>
 					<div>Home</div></a
 				>
 			</li>
-			<li aria-current={$page.url.pathname.includes('/articles') ? 'page' : undefined}>
+			<li aria-current={page.url.pathname.includes('/articles') ? 'page' : undefined}>
 				<a href="/articles"
 					><div aria-hidden="true">✍️</div>
 					<div>Articles</div></a
 				>
 			</li>
-			<li aria-current={$page.url.pathname.includes('/experiments') ? 'page' : undefined}>
+			<li aria-current={page.url.pathname.includes('/experiments') ? 'page' : undefined}>
 				<a href="/experiments"
 					><div aria-hidden="true">🧪</div>
 					<div>Experiments</div></a
 				>
 			</li>
-			<li aria-current={$page.url.pathname.includes('/about-') ? 'page' : undefined}>
-				<div class="dropdown">
-					<span aria-hidden="true">👋</span><span class="visually-hidden">About</span>
-				</div>
-				<div class="dropdown-content">
+			<li aria-current={page.url.pathname.includes('/about-') ? 'page' : undefined}>
+				<button class="dropdown" aria-expanded={aboutOpen} onclick={() => (aboutOpen = !aboutOpen)}>
+					<div aria-hidden="true">👋</div>
+					<div>About</div>
+				</button>
+				<div class="dropdown-content" class:open={aboutOpen}>
 					<div>
 						<a
-							aria-current={$page.url.pathname === '/about-app' ? 'page' : undefined}
+							aria-current={page.url.pathname === '/about-app' ? 'page' : undefined}
 							href="/about-app">App</a
 						>
 					</div>
 					<div>
 						<a
-							aria-current={$page.url.pathname === '/about-me' ? 'page' : undefined}
+							aria-current={page.url.pathname === '/about-me' ? 'page' : undefined}
 							href="/about-me">Me</a
 						>
 					</div>
@@ -47,18 +50,19 @@
 			</li>
 		</ul>
 		<button
-			aria-label="toggle navbar"
-			aria-pressed={holdNavbarOpen}
+			class="toggle"
+			aria-label="Pin navigation open"
+			aria-expanded={holdNavbarOpen}
 			onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
 		>
 			<svg viewBox="0 0 2 3" aria-hidden="true">
 				<defs>
-					<linearGradient id="wedge-surface" x1="0" y1="0" x2="0" y2="1">
+					<linearGradient id={wedgeGradient} x1="0" y1="0" x2="0" y2="1">
 						<stop class="stop-top" offset="0" />
 						<stop class="stop-bottom" offset="1" />
 					</linearGradient>
 				</defs>
-				<path class="wedge" d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+				<path class="wedge" fill="url(#{wedgeGradient})" d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 				<g class="grip">
 					<line x1="1.37" y1="0.49" x2="1.01" y2="1.2" />
 					<line x1="1.05" y1="0.44" x2="0.79" y2="0.98" />
@@ -69,35 +73,45 @@
 </header>
 
 <style>
-	/* Sole height source: the wedge svg and the nav items size off this via height: 100% */
+	/* The header's footprint is just the handle: the bar is taken out of flow below, so a
+	   closed drawer reserves no width. Sizing it to the open bar gave every page a
+	   horizontal scrollbar under ~369px and an invisible hover band across the top. */
 	header {
-		--wedge-width: 2em;
-		/* The drawer needs its own surface: --color-bg-semidark is exactly the page
-		   gradient's brightest band, which sits right behind the bar */
+		--wedge-width: 2rem;
 		--surface-top: #4a2a0c;
 		--surface-bottom: #2a1606;
+		/* Sole height source: the wedge svg and the nav items size off this via height: 100% */
 		height: 3rem;
-		display: flex;
-		width: fit-content;
-		/* On header, not nav: the toggle button's wedge lives outside nav and fills from this */
-		--background: var(--color-bg-semidark);
-		padding-right: 1rem;
+		width: var(--wedge-width);
 		margin-bottom: 1rem;
+		position: sticky;
+		top: 0;
+		/* The bar is no longer the page's topmost positioned element, so claim a layer */
+		z-index: 10;
 	}
 
-	/* Closed, the bar slides out by its own width less the wedge, so the wedge stays
-	   in the corner as the drawer's handle and extends with the bar as it opens */
+	/* The wedge is the drawer's handle: offsetting nav by its own width less the wedge parks
+	   the wedge in the corner when closed, and it rides to the bar's far end when open */
 	nav {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: max-content;
 		display: flex;
-		justify-content: center;
 		transform: translateX(calc(-100% + var(--wedge-width)));
 		transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
 	}
 
+	/* Hover waits, so a click aimed at the handle lands before the handle slides away */
+	header:hover nav {
+		transform: none;
+		transition-delay: 350ms;
+	}
+
 	header.held nav,
-	header:hover nav,
 	header:focus-within nav {
 		transform: none;
+		transition-delay: 0s;
 	}
 
 	nav > button {
@@ -106,8 +120,8 @@
 		padding: 0;
 	}
 
-	/* drop-shadow only on the wedge: it follows the shape, and it is small enough to
-	   re-rasterise cheaply. On nav it would repaint the whole bar every frame. */
+	/* drop-shadow, not box-shadow: it follows the wedge's diagonal. Kept off nav so it
+	   doesn't also outline the dropdown hanging out of the bar. */
 	svg {
 		width: var(--wedge-width);
 		height: 100%;
@@ -126,28 +140,26 @@
 	}
 
 	.wedge {
-		fill: url(#wedge-surface);
-		stroke: rgba(255, 255, 255, 0.18);
-		stroke-width: 0.04;
+		stroke: rgba(255, 255, 255, 0.35);
+		stroke-width: 0.05;
 	}
 
-	/* Drawer pull: muted while the drawer is free to close, lit while pinned open */
+	/* Drawer pull: dimmed while the drawer is free to close, lit while pinned open */
 	.grip line {
-		stroke: var(--color-text);
+		stroke: var(--color-primary);
 		stroke-width: 0.13;
 		stroke-linecap: round;
-		opacity: 0.45;
+		opacity: 0.7;
 		transition:
 			stroke 0.2s linear,
 			opacity 0.2s linear;
 	}
 
 	header.held .grip line {
-		stroke: var(--color-primary);
 		opacity: 1;
 	}
 
-	/* Pinned open reads as pressed in: the highlight goes, the shadow tightens */
+	/* Pinned open reads as pressed in: the highlight dims, the shadow tightens */
 	header.held ul {
 		box-shadow:
 			0 1px 1px rgba(0, 0, 0, 0.6),
@@ -172,6 +184,11 @@
 		align-items: center;
 		list-style: none;
 		padding-right: 0.6rem;
+		/* Keep the handle on screen when the bar is wider than the viewport. border-box
+		   because this page has no CSS reset, so padding would otherwise widen the cap. */
+		box-sizing: border-box;
+		max-width: calc(100vw - var(--wedge-width));
+		overflow-x: auto;
 		background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
 		box-shadow:
 			0 2px 3px rgba(0, 0, 0, 0.55),
@@ -197,7 +214,8 @@
 		border-top: var(--size) solid var(--color-text);
 	}
 
-	nav a {
+	nav a,
+	.dropdown {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -214,31 +232,25 @@
 		transition: color 0.2s linear;
 	}
 
-	a:hover {
+	a:hover,
+	.dropdown:hover {
 		color: var(--color-primary);
 	}
 
 	.dropdown {
-		cursor: default;
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
+		cursor: pointer;
+		background: transparent;
+		border: 0;
+		font-family: inherit;
 	}
 
-	/* Hovering the whole li keeps the menu open while the pointer travels into it,
-	   and pointer-events keeps the hidden menu from swallowing clicks on the wedge.
-	   focus-within is what makes the links reachable by keyboard: without it, tabbing
-	   moves focus into a menu that is still transparent. */
+	/* Hovering the whole li keeps the menu open while the pointer travels into it, and the
+	   button opens it on touch, where neither hover nor focus exists. pointer-events stops
+	   the hidden menu eating hovers on the Experiments link it overlaps. focus-within makes
+	   the links keyboard-reachable: without it, tabbing moves focus into a transparent menu. */
 	li:hover .dropdown-content,
-	li:focus-within .dropdown-content {
+	li:focus-within .dropdown-content,
+	.dropdown-content.open {
 		opacity: 1;
 		transform: translateY(0%);
 		pointer-events: auto;
@@ -252,10 +264,11 @@
 		min-width: 100%;
 		transform: translateY(-100%);
 		opacity: 0;
-		background: var(--background);
+		background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
 		transition:
-			transform 0.7s,
-			opacity 1s;
+			transform 0.2s,
+			opacity 0.2s;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -266,7 +279,8 @@
 		nav,
 		ul,
 		svg,
-		.grip line {
+		.grip line,
+		.dropdown-content {
 			transition: none;
 		}
 	}

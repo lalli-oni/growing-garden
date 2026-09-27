@@ -37,7 +37,7 @@
 
 <style>
 	article {
-		padding: 1rem;
+		padding: 0 1rem 1rem;
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
 	}

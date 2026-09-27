@@ -129,7 +129,9 @@ NEW_ID=$(gh api repos/lalli-oni/growing-garden/issues/<NEW_NUMBER> --jq '.id')
 gh api -X POST repos/lalli-oni/growing-garden/issues/<PARENT_NUMBER>/sub_issues -F sub_issue_id=$NEW_ID
 ```
 
-Endpoint arguments carry no leading slash: Git Bash rewrites a leading `/` into a Windows path and gh rejects it. The endpoint also rejects strings: `gh api -f sub_issue_id=...` returns `422 Invalid property /sub_issue_id: "..." is not of type "integer"`. Always use `-F`.
+Endpoint arguments carry no leading slash: Git Bash rewrites a leading `/` into a Windows path, and gh refuses it with `invalid API endpoint`.
+
+The endpoint also rejects strings: `gh api -f sub_issue_id=...` returns `422 Invalid property /sub_issue_id: "..." is not of type "integer"`. Always use `-F`.
 
 ### Issues as living documents
 Issues are not write-once. When working on one:
