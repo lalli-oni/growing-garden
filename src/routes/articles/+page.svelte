@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Article } from "$lib/types"
-	import ArticleItem from "../../components/ArticleItem.svelte"
+	import type { Article } from '$lib/types'
+	import ArticleItem from '../../components/ArticleItem.svelte'
 
-	let { data }: { data: { articles: Array<Article> }} = $props()
+	let { data }: { data: { articles: Array<Article> } } = $props()
 </script>
 
 <div>
@@ -17,7 +17,6 @@
 
 <style>
 	div {
-		padding-top: 4rem;
 		align-self: center;
 	}
 

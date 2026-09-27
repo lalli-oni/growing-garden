@@ -55,7 +55,7 @@
 	}
 
 	p {
-		padding-top: 6rem;
+		padding-top: 2rem;
 	}
 
 	.panel-grid {

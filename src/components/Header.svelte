@@ -234,8 +234,11 @@
 	}
 
 	/* Hovering the whole li keeps the menu open while the pointer travels into it,
-	   and pointer-events keeps the hidden menu from swallowing clicks on the wedge */
-	li:hover .dropdown-content {
+	   and pointer-events keeps the hidden menu from swallowing clicks on the wedge.
+	   focus-within is what makes the links reachable by keyboard: without it, tabbing
+	   moves focus into a menu that is still transparent. */
+	li:hover .dropdown-content,
+	li:focus-within .dropdown-content {
 		opacity: 1;
 		transform: translateY(0%);
 		pointer-events: auto;
