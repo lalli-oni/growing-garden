@@ -52,7 +52,11 @@
 			onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
 		>
 			<svg viewBox="0 0 2 3" aria-hidden="true">
-				<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+				<path class="wedge" d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+				<g class="grip">
+					<line x1="1.42" y1="0.5" x2="1.12" y2="1.1" />
+					<line x1="1.66" y1="0.42" x2="1.36" y2="1.02" />
+				</g>
 			</svg>
 		</button>
 	</nav>
@@ -99,8 +103,40 @@
 		flex-shrink: 0;
 	}
 
-	path {
+	/* The drawer floats over the page's gradient rather than sitting flat on it */
+	nav {
+		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
+	}
+
+	.wedge {
 		fill: var(--background);
+		stroke: rgba(255, 255, 255, 0.18);
+		stroke-width: 0.04;
+	}
+
+	/* Drawer pull: muted while the drawer is free to close, lit while pinned open */
+	.grip line {
+		stroke: var(--color-text);
+		stroke-width: 0.13;
+		stroke-linecap: round;
+		opacity: 0.45;
+		transition:
+			stroke 0.2s linear,
+			opacity 0.2s linear;
+	}
+
+	header.held .grip line {
+		stroke: var(--color-primary);
+		opacity: 1;
+	}
+
+	/* Pinned open reads as pressed in: the highlight goes, the shadow tightens */
+	header.held nav {
+		filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
+	}
+
+	header.held .wedge {
+		stroke: rgba(0, 0, 0, 0.45);
 	}
 
 	ul {
@@ -113,6 +149,9 @@
 		list-style: none;
 		background: var(--background);
 		background-size: contain;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.18),
+			inset 0 -2px 3px rgba(0, 0, 0, 0.35);
 	}
 
 	li {
