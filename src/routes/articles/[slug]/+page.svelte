@@ -28,7 +28,6 @@
 		</div>
 	</hgroup>
 
-
 	<!-- Post -->
 	<div class="prose">
 		<!-- mdsvex rendered component -->
@@ -38,8 +37,7 @@
 
 <style>
 	article {
-		padding: 1rem;
-		padding-top: 4rem;
+		padding: 0 1rem 1rem;
 		max-inline-size: var(--size-content-3);
 		margin-inline: auto;
 	}

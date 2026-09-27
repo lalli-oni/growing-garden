@@ -12,7 +12,7 @@
 
 <style>
 	div {
-		padding-top: 10rem;
+		padding-top: 6rem;
 		align-self: center;
 	}
 
