@@ -91,7 +91,7 @@
 		display: flex;
 		justify-content: center;
 		transform: translateX(calc(-100% + var(--wedge-width)));
-		transition: transform 1s;
+		transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
 	}
 
 	header.held nav,
@@ -106,16 +106,15 @@
 		padding: 0;
 	}
 
+	/* drop-shadow only on the wedge: it follows the shape, and it is small enough to
+	   re-rasterise cheaply. On nav it would repaint the whole bar every frame. */
 	svg {
 		width: var(--wedge-width);
 		height: 100%;
 		display: block;
 		flex-shrink: 0;
-	}
-
-	/* The drawer floats over the page's gradient rather than sitting flat on it */
-	nav {
-		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
+		filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+		transition: filter 260ms ease;
 	}
 
 	.stop-top {
@@ -149,7 +148,14 @@
 	}
 
 	/* Pinned open reads as pressed in: the highlight goes, the shadow tightens */
-	header.held nav {
+	header.held ul {
+		box-shadow:
+			0 1px 1px rgba(0, 0, 0, 0.6),
+			inset 0 1px 0 rgba(255, 255, 255, 0.08),
+			inset 0 -2px 3px rgba(0, 0, 0, 0.45);
+	}
+
+	header.held svg {
 		filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
 	}
 
@@ -168,8 +174,10 @@
 		padding-right: 0.6rem;
 		background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
 		box-shadow:
+			0 2px 3px rgba(0, 0, 0, 0.55),
 			inset 0 1px 0 rgba(255, 255, 255, 0.18),
 			inset 0 -2px 3px rgba(0, 0, 0, 0.35);
+		transition: box-shadow 260ms ease;
 	}
 
 	li {
@@ -249,5 +257,14 @@
 		flex-direction: column;
 		gap: 1rem;
 		padding: 0.2rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		nav,
+		ul,
+		svg,
+		.grip line {
+			transition: none;
+		}
 	}
 </style>
