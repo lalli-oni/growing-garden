@@ -52,10 +52,16 @@
 			onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
 		>
 			<svg viewBox="0 0 2 3" aria-hidden="true">
+				<defs>
+					<linearGradient id="wedge-surface" x1="0" y1="0" x2="0" y2="1">
+						<stop class="stop-top" offset="0" />
+						<stop class="stop-bottom" offset="1" />
+					</linearGradient>
+				</defs>
 				<path class="wedge" d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 				<g class="grip">
-					<line x1="1.42" y1="0.5" x2="1.12" y2="1.1" />
-					<line x1="1.66" y1="0.42" x2="1.36" y2="1.02" />
+					<line x1="1.37" y1="0.49" x2="1.01" y2="1.2" />
+					<line x1="1.05" y1="0.44" x2="0.79" y2="0.98" />
 				</g>
 			</svg>
 		</button>
@@ -66,6 +72,10 @@
 	/* Sole height source: the wedge svg and the nav items size off this via height: 100% */
 	header {
 		--wedge-width: 2em;
+		/* The drawer needs its own surface: --color-bg-semidark is exactly the page
+		   gradient's brightest band, which sits right behind the bar */
+		--surface-top: #4a2a0c;
+		--surface-bottom: #2a1606;
 		height: 3rem;
 		display: flex;
 		width: fit-content;
@@ -108,8 +118,16 @@
 		filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
 	}
 
+	.stop-top {
+		stop-color: var(--surface-top);
+	}
+
+	.stop-bottom {
+		stop-color: var(--surface-bottom);
+	}
+
 	.wedge {
-		fill: var(--background);
+		fill: url(#wedge-surface);
 		stroke: rgba(255, 255, 255, 0.18);
 		stroke-width: 0.04;
 	}
@@ -147,8 +165,8 @@
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
-		background-size: contain;
+		padding-right: 0.6rem;
+		background: linear-gradient(180deg, var(--surface-top), var(--surface-bottom));
 		box-shadow:
 			inset 0 1px 0 rgba(255, 255, 255, 0.18),
 			inset 0 -2px 3px rgba(0, 0, 0, 0.35);
@@ -218,6 +236,9 @@
 	.dropdown-content {
 		pointer-events: none;
 		position: absolute;
+		/* Anchored right so the menu grows into the bar instead of overhanging the wedge */
+		right: 0;
+		min-width: 100%;
 		transform: translateY(-100%);
 		opacity: 0;
 		background: var(--background);
