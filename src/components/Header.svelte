@@ -46,21 +46,22 @@
 				</div>
 			</li>
 		</ul>
+		<button
+			aria-label="toggle navbar"
+			aria-pressed={holdNavbarOpen}
+			onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
+		>
+			<svg viewBox="0 0 2 3" aria-hidden="true">
+				<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+			</svg>
+		</button>
 	</nav>
-	<button
-		aria-label="toggle navbar"
-		aria-pressed={holdNavbarOpen}
-		onclick={() => (holdNavbarOpen = !holdNavbarOpen)}
-	>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</button>
 </header>
 
 <style>
 	/* Sole height source: the wedge svg and the nav items size off this via height: 100% */
 	header {
+		--wedge-width: 2em;
 		height: 3rem;
 		display: flex;
 		width: fit-content;
@@ -70,11 +71,12 @@
 		margin-bottom: 1rem;
 	}
 
-	/* The bar slides, not the header — that keeps the toggle button on screen when closed */
+	/* Closed, the bar slides out by its own width less the wedge, so the wedge stays
+	   in the corner as the drawer's handle and extends with the bar as it opens */
 	nav {
 		display: flex;
 		justify-content: center;
-		transform: translate(-22rem);
+		transform: translateX(calc(-100% + var(--wedge-width)));
 		transition: transform 1s;
 	}
 
@@ -84,20 +86,14 @@
 		transform: none;
 	}
 
-	header > button {
+	nav > button {
 		background-color: transparent;
 		border: 0;
 		padding: 0;
 	}
 
-	/* The wedge is the toggle's only visible surface, so it stays accented in
-	   every state — filling it with the bar's background hid it against the page */
-	button path {
-		fill: var(--color-primary);
-	}
-
 	svg {
-		width: 2em;
+		width: var(--wedge-width);
 		height: 100%;
 		display: block;
 		flex-shrink: 0;
@@ -172,16 +168,16 @@
 		transition: color 0.2s linear;
 	}
 
-	.dropdown:hover + .dropdown-content {
+	/* Hovering the whole li keeps the menu open while the pointer travels into it,
+	   and pointer-events keeps the hidden menu from swallowing clicks on the wedge */
+	li:hover .dropdown-content {
 		opacity: 1;
 		transform: translateY(0%);
-	}
-	.dropdown-content:hover {
-		opacity: 1;
-		transform: translateY(0%);
+		pointer-events: auto;
 	}
 
 	.dropdown-content {
+		pointer-events: none;
 		position: absolute;
 		transform: translateY(-100%);
 		opacity: 0;
